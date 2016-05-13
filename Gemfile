@@ -17,7 +17,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'capybara', '~> 2.7', '>= 2.7.1'
-  gem 'shoulda-matchers', '~> 2.6.1'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 
   gem 'rails-assets-angular-mocks', '1.2.14'
@@ -34,7 +34,7 @@ group :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'forgery', '~> 0.6.0'
-  gem 'fakeweb', '~> 1.3.0'
+  gem 'faker'
 end
 
 group :development do
