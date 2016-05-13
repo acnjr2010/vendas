@@ -1,1 +1,8 @@
-%h2 Lista de Produtos
+#produtos
+  %h2 Lista de Produtos
+  - @produtos.each do |produto|
+    .produto
+      %td
+        %h3.title= link_to produto.nome, produto
+        Em estoque:
+        = produto.em_estoque

@@ -1,0 +1,43 @@
+%h3 Produto cadastrado
+
+%p
+  Nome:
+  = @produto.nome
+%p
+  Preço Unitário:
+  = number_to_currency(@produto.preco_unitario, unit: "R$ ", separator: ",", delimiter: "")
+%p
+  Quantidade:
+  = @produto.quantidade
+%p
+  Valor Gasto:
+  = number_to_currency(@produto.valor_gasto, unit: "R$ ", separator: ",", delimiter: "")
+%p
+  Valor Unitário:
+  = number_to_currency(@produto.valor_unitario, unit: "R$ ", separator: ",", delimiter: "")
+%p
+  Valor de Venda:
+  = number_to_currency(@produto.valor_venda_total, unit: "R$ ", separator: ",", delimiter: "")
+%p
+  Mercadoria Vendida:
+  = @produto.mercadoria_vendida
+%p
+  Mercadoria em Estoque:
+  = @produto.mercadoria_estoque
+%p
+  Lucro:
+  = number_to_currency(@produto.lucro, unit: "R$ ", separator: ",", delimiter: "")
+%p
+  Percentual de Lucro:
+  = @produto.lucro_percentual
+  \%
+%p
+  Em estoque:
+  = @produto.em_estoque
+%p
+  Vendido:
+  = @produto.vendido
+
+= link_to "Editar Produto", edit_produto_path(@produto)
+= link_to "Apagar Produto", produto_path(@produto), method: :delete, data: { confirm: "Você tem certeza que deseja apagar o produto #{@produto.nome.downcase} ?" }
+= link_to "Tela Principal", root_path

@@ -9,7 +9,14 @@ class ProdutosController < ApplicationController
     @produto = Produto.new
   end
 
-  def create(produtos_params)
+  def create
+    @produto = Produto.new(produtos_params)
+
+    if @produto.save
+      redirect_to @produto
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -19,15 +26,22 @@ class ProdutosController < ApplicationController
   end
 
   def update
+    if @produto.update(produtos_params)
+      redirect_to @produto
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @produto.destroy
+    redirect_to root_path
   end
 
   private
 
   def produtos_params
-    produto.params(:produto).require(:nome, :preco_unitario, :quantidade,
+    params.require(:produto).permit(:nome, :preco_unitario, :quantidade,
     :valor_gasto, :valor_unitario, :valor_venda_total, :mercadoria_vendida,
     :mercadoria_estoque, :lucro, :lucro_percentual, :em_estoque, :vendido)
   end
